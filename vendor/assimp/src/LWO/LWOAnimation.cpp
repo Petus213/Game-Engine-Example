@@ -331,9 +331,9 @@ void AnimResolver::DoInterpolation2(std::vector<LWO::Key>::const_iterator beg,
             break;
     }
     // linear interpolation - default
-    double duration = (*end).time - (*beg).time;
-    if (duration > 0.0) {
-        fill = (*beg).value + ((*end).value - (*beg).value)*(float)(((time - (*beg).time) / duration));
+    double timePassed = (*end).time - (*beg).time;
+    if (timePassed > 0.0) {
+        fill = (*beg).value + ((*end).value - (*beg).value)*(float)(((time - (*beg).time) / timePassed));
     } else {
         fill = (*beg).value;
     }

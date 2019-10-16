@@ -16,6 +16,8 @@ namespace Engine {
 		Application(); //!< Constructor
 	private:
 		static Application* s_instance; //!< Singleton instance of the application
+		static float f_accumulatedTime;
+
 	public:
 		virtual ~Application(); //!< Deconstructor
 		inline static Application& getInstance() { return *s_instance; } //!< Instance getter from singleton pattern
