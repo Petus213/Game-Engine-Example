@@ -1,6 +1,8 @@
 /** \file application.h
 */
 #pragma once
+#include "Events/events.h"
+#include "Events/Window_Events.h"
 
 namespace Engine {
 
@@ -16,12 +18,13 @@ namespace Engine {
 		Application(); //!< Constructor
 	private:
 		static Application* s_instance; //!< Singleton instance of the application
-		static float f_accumulatedTime;
+		static float accumulatedTime;
 
 	public:
 		virtual ~Application(); //!< Deconstructor
 		inline static Application& getInstance() { return *s_instance; } //!< Instance getter from singleton pattern
 		void run(); //!< Main loop
+		void onEvent(Event& e);
 	};
 
 	// To be defined in users code

@@ -6,7 +6,7 @@ namespace Engine {
 
 	std::chrono::high_resolution_clock::time_point timer::startTimer;
 	std::chrono::high_resolution_clock::time_point timer::endTimer;
-	std::chrono::duration<float> timer::framePassed;
+	std::chrono::duration<float> timer::time_Passed;
 
 	bool timer::bRunning = false;
 
@@ -26,7 +26,7 @@ namespace Engine {
 	{
 		if (bRunning) {
 			endTimer = std::chrono::high_resolution_clock::now();
-			framePassed = endTimer - startTimer;
+			time_Passed = endTimer - startTimer;
 
 			startTimer = std::chrono::high_resolution_clock::now();
 		}
