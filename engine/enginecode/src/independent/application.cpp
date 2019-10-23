@@ -27,13 +27,22 @@ namespace Engine {
 	{
 	}
 
+	bool Application::onClose(WindowCloseEvent & e)
+	{
+		NG_INFO("Closing Application");
+		m_Running = false;
+		return true;
+	}
+
+	bool Application::onResize(WindowResizeEvent & e)
+	{
+		NG_INFO("Resize Window to {0}x{1}", e.getWidth(), e.getHeight());
+	}
+
 	void Application::onEvent(Event& e)
 	{
-		if (e.getEventType() == EventType::WindowResize) {
-			WindowResizeEvent re = (WindowResizeEvent&)e;
-
-			NG_INFO("Window Resize Event. Width {0}. Height {1}", re.getWidth(), re.getHeight());
-		}
+		EventDispatcher dispatcher(e);
+		dispatcher.dispatch<WindowCloseEvent>(std::bind(&Application::onClose, this, std::placeholders::_1));
 	}
 
 
@@ -52,10 +61,10 @@ namespace Engine {
 			
 			if (accumulatedTime > 10.f)
 			{
-				WindowResizeEvent e(1024, 720);
-				onEvent(e);
-				run = false;
-				NG_INFO("Time Elapsed: {0}. Shutting Down", accumulatedTime);
+				WindowResizeEvent e1(1024, 720);
+				onEvent(e1);
+				WindowCloseEvent e2;
+				onEvent(e2);
 			}
 
 

@@ -19,6 +19,12 @@ namespace Engine {
 	private:
 		static Application* s_instance; //!< Singleton instance of the application
 		static float accumulatedTime;
+		bool m_Running;
+
+		bool onClose(WindowCloseEvent& e);
+		bool onResize(WindowResizeEvent& e);
+		
+
 
 	public:
 		virtual ~Application(); //!< Deconstructor

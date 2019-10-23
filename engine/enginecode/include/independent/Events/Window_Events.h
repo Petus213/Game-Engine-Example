@@ -28,4 +28,37 @@ namespace Engine {
 		inline int getHeight() const { return m_height; }
 	};
 
+	class WindowFocusEvent : public Event
+	{
+	private:
+
+	public:
+		WindowFocusEvent();
+		virtual EventType getEventType() const override { return EventType::WindowFocus; }
+		virtual int getCategoryFlags() const override { return EventCategoryWindow; }
+
+	};
+
+	class WindowLostFocusEvent : public Event
+	{
+	private:
+		float xPos;
+		float yPos;
+	public:
+		WindowLostFocusEvent();
+		virtual EventType getEventType() const override { return EventType::windowLostFocus; }
+		virtual int getCategoryFlags() const override { return EventCategoryWindow; }
+
+		inline float getXpos() const { return xPos; }
+		inline float getYpos() const { return yPos; }
+	};
+
+	class WindowMovedEvent : public Event
+	{
+	public:
+		WindowMovedEvent();
+		virtual EventType getEventType() const override { return EventType::WindowMoved; }
+		virtual int getCategoryFlags() const override { return EventCategoryWindow; }
+	};
+
 }
