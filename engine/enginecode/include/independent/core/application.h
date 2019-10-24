@@ -3,6 +3,8 @@
 #pragma once
 #include "Events/events.h"
 #include "Events/Window_Events.h"
+#include "Events/Keyboard_Events.h"
+#include "Events/Mouse_Events.h"
 
 namespace Engine {
 
@@ -21,8 +23,23 @@ namespace Engine {
 		static float accumulatedTime;
 		bool m_Running;
 
-		bool onClose(WindowCloseEvent& e);
-		bool onResize(WindowResizeEvent& e);
+		//Window Events Here
+		bool onCloseWindow(WindowCloseEvent& e);
+		bool onResizeWindow(WindowResizeEvent& e);
+		bool onFocusWindow(WindowFocusEvent& e);
+		bool onLostFocusWindow(WindowLostFocusEvent& e);
+		bool onMovedWindow(WindowMovedEvent& e);
+
+		//Keyboard Events here
+		bool onKeyPressed(KeyPressedEvent& e);
+		bool onKeyReleased(KeyReleasedEvent& e);
+		bool onKeyTyped(KeyTypedEvent& e);
+
+		//Mouse Events Here
+		bool onMouseButtonPressed(MouseButtonPressedEvent& e);
+		bool onMouseButtonReleased(MouseButtonReleasedEvent& e);
+		bool onMouseMoved(MouseMovedEvent& e);
+		bool onMouseScrolled(MouseScrolledEvent& e);
 		
 
 

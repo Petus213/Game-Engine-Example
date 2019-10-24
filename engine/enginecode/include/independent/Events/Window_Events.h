@@ -10,6 +10,8 @@ namespace Engine {
 
 		EventType getEventType() const override { return EventType::WindowClose; }
 		int getCategoryFlags() const override { return EventCategoryWindow; }
+
+		static EventType getStaticType() { return EventType::WindowClose;  }
 	};
 
 	class WindowResizeEvent : public Event
@@ -23,6 +25,8 @@ namespace Engine {
 
 		virtual EventType getEventType() const override { return EventType::WindowResize; }
 		virtual int getCategoryFlags() const override { return EventCategoryWindow; }
+		
+		static EventType getStaticType() { return EventType::WindowResize; }
 
 		inline int getWidth() const { return m_width; }
 		inline int getHeight() const { return m_height; }
@@ -37,6 +41,7 @@ namespace Engine {
 		virtual EventType getEventType() const override { return EventType::WindowFocus; }
 		virtual int getCategoryFlags() const override { return EventCategoryWindow; }
 
+		static EventType getStaticType() { return EventType::WindowFocus; }
 	};
 
 	class WindowLostFocusEvent : public Event
@@ -49,6 +54,8 @@ namespace Engine {
 		virtual EventType getEventType() const override { return EventType::windowLostFocus; }
 		virtual int getCategoryFlags() const override { return EventCategoryWindow; }
 
+		static EventType getStaticType() { return EventType::windowLostFocus; }
+
 		inline float getXpos() const { return xPos; }
 		inline float getYpos() const { return yPos; }
 	};
@@ -59,6 +66,8 @@ namespace Engine {
 		WindowMovedEvent();
 		virtual EventType getEventType() const override { return EventType::WindowMoved; }
 		virtual int getCategoryFlags() const override { return EventCategoryWindow; }
+
+		static EventType getStaticType() { return EventType::WindowMoved; }
 	};
 
 }

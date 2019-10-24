@@ -14,6 +14,8 @@ namespace Engine {
 		virtual EventType getEventType() const override { return EventType::KeyPressed; }
 		virtual int getCategoryFlags() const override { return EventCategoryKeyboard; }
 
+		static EventType getStaticType() { return EventType::KeyPressed; }
+
 		inline int getKeycode() const { return i_KeyCode; }
 		inline int getRepeatCount() const { return i_RepeatCount; }
 
@@ -29,6 +31,8 @@ namespace Engine {
 		virtual EventType getEventType() const override { return EventType::KeyReleased; }
 		virtual int getCategoryFlags() const override { return EventCategoryKeyboard; }
 
+		static EventType getStaticType() { return EventType::KeyReleased; }
+
 		inline int getKeycode() const { return i_KeyCode; }
 	};
 
@@ -36,11 +40,13 @@ namespace Engine {
 	{
 	private:
 		int i_KeyCode;
-	private:
+	public:
 		KeyTypedEvent();
 
 		virtual EventType getEventType() const override { return EventType::KeyTyped; }
 		virtual int getCategoryFlags() const override { return EventCategoryKeyboard; }
+
+		static EventType getStaticType() { return EventType::KeyTyped; }
 
 		inline int getKeycode() const { return i_KeyCode; }
 	};

@@ -13,6 +13,8 @@ namespace Engine {
 		virtual EventType getEventType() const override { return EventType::MouseButtonPressed; }
 		virtual int getCategoryFlags() const override { return EventCategoryMouseButton; }
 
+		static EventType getStaticType() { return EventType::MouseButtonPressed; }
+
 		inline int getMouseButton() const { return i_MouseButton; }
 	};
 
@@ -25,6 +27,8 @@ namespace Engine {
 
 		virtual EventType getEventType() const override { return EventType::MouseButtonReleased; }
 		virtual int getCategoryFlags() const override { return EventCategoryMouseButton; }
+
+		static EventType getStaticType() { return EventType::MouseButtonReleased; }
 
 		inline int getMouseButton() const { return i_MouseButton; }
 	};
@@ -41,6 +45,8 @@ namespace Engine {
 		virtual EventType getEventType() const override { return EventType::MouseMoved; }
 		virtual int getCategoryFlags() const override { return EventCategoryMouse; }
 
+		static EventType getStaticType() { return EventType::MouseMoved; }
+
 		inline int getMouseXoffset() const { return f_Xoffset; }
 		inline int getMouseYoffset() const { return f_Yoffset; }
 	};
@@ -55,6 +61,8 @@ namespace Engine {
 
 		virtual EventType getEventType() const override { return EventType::MouseScrolled; }
 		virtual int getCategoryFlags() const override { return EventCategoryMouse; }
+
+		static EventType getStaticType() { return EventType::MouseScrolled; }
 
 		inline int getMouseXoffset() const { return f_Xoffset; }
 		inline int getMouseYoffset() const { return f_Yoffset; }
