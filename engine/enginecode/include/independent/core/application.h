@@ -5,6 +5,7 @@
 #include "Events/Window_Events.h"
 #include "Events/Keyboard_Events.h"
 #include "Events/Mouse_Events.h"
+#include "windows\window.h"
 
 namespace Engine {
 
@@ -23,6 +24,18 @@ namespace Engine {
 		static float accumulatedTime;
 		bool m_Running;
 
+		std::unique_ptr<Window> m_window;
+
+	
+		
+
+
+	public:
+		virtual ~Application(); //!< Deconstructor
+		inline static Application& getInstance() { return *s_instance; } //!< Instance getter from singleton pattern
+		void run(); //!< Main loop
+		void onEvent(Event& e);
+
 		//Window Events Here
 		bool onCloseWindow(WindowCloseEvent& e);
 		bool onResizeWindow(WindowResizeEvent& e);
@@ -40,14 +53,6 @@ namespace Engine {
 		bool onMouseButtonReleased(MouseButtonReleasedEvent& e);
 		bool onMouseMoved(MouseMovedEvent& e);
 		bool onMouseScrolled(MouseScrolledEvent& e);
-		
-
-
-	public:
-		virtual ~Application(); //!< Deconstructor
-		inline static Application& getInstance() { return *s_instance; } //!< Instance getter from singleton pattern
-		void run(); //!< Main loop
-		void onEvent(Event& e);
 	};
 
 	// To be defined in users code

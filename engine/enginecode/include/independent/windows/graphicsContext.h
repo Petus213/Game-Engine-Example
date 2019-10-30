@@ -8,9 +8,13 @@
 * Basically provides means for initialisation and swapchain implementation.
 */
 
-class GraphicsContext
-{
-public:
-	virtual void init() = 0;
-	virtual void swapBuffers() = 0;
-};
+namespace Engine {
+
+	class GraphicsContext
+	{
+	public:
+		virtual void init() = 0;
+		virtual void swapBuffers() = 0;
+	};
+
+}
