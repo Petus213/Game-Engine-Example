@@ -74,7 +74,7 @@ namespace Engine {
 
 	bool Application::onKeyTyped(KeyTypedEvent & e)
 	{
-		NG_INFO("Keys have been typed");
+		NG_INFO("Keys have been typed", e.getKeycode());
 		return true;
 	}
 
