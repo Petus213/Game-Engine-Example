@@ -21,6 +21,9 @@ namespace Engine {
 		{
 			s_instance = this;
 		}
+
+		m_window = std::unique_ptr<Window>(Window::create());
+		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
 	}
 
 	Application::~Application()
@@ -141,6 +144,7 @@ namespace Engine {
 			accumulatedTime += timestep;
 			NG_INFO("FPS: {0}. Time Elapsed: {1}.", (int)(1.0f / timestep), accumulatedTime);
 
+			m_window->onUpdate(timestep);
 			
 			if (accumulatedTime > 10.f)
 			{

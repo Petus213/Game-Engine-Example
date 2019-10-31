@@ -26,3 +26,5 @@ namespace Engine {
 #define NG_ERROR(...)::Engine::Log::GetLog()->error(__VA_ARGS__)
 #define NG_CRITICAL(...)::Engine::Log::GetLog()->critical(__VA_ARGS__)
 #define NG_FATAL(...)::Engine::Log::GetLog()->fatal(__VA_ARGS__)
+
+#define NG_ASSERT(x, ...) { if(!(x)) { NG_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }

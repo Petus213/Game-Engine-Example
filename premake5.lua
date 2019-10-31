@@ -36,6 +36,7 @@ project "Engine"
 	{
 		"%{prj.name}/enginecode/",
 		"%{prj.name}/enginecode/include/independent",
+		"%{prj.name}/enginecode/include/platform",
 		"%{prj.name}/precompiled/",
 		"vendor/spdlog/include",
 		"vendor/glfw/include",
