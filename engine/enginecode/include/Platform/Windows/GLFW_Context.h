@@ -2,7 +2,7 @@
 #include "windows\graphicsContext.h"
 #include "glad\glad.h"
 #include "GLFW\glfw3.h"
-
+#include "systems\log.h"
 
 namespace Engine {
 

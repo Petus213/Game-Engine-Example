@@ -1,5 +1,6 @@
-#include "windows\GLFW_Windows.h"
 #include "engine_pch.h"
+
+#include "windows\GLFW_Windows.h"
 #include "windows\GLFW_Context.h"
 #include "Events\Window_Events.h"
 #include "Events\Mouse_Events.h"
@@ -11,7 +12,7 @@ namespace Engine {
 
 	static void GLFWErrorCallback(int error, const char* description)
 	{
-		NG_INFO("GLFW Error {0}: {1}", error, description);
+		NG_INFO("GLFW Error {0} : {1}", error, description);
 	}
 
 	Window* Window::create(const WindowProperties& properties)
