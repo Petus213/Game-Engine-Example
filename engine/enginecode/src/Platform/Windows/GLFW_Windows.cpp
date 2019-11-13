@@ -66,8 +66,8 @@ namespace Engine {
 				}
 				case KEY_RELEASE:
 				{
-					//KeyReleasedEvent event(key);
-					//callback(event);
+					KeyReleasedEvent event(key);
+					callback(event);
 					break;
 				}
 				case KEY_REPEAT:
@@ -83,8 +83,8 @@ namespace Engine {
 		{
 			std::function<void(Event&)>& callback = *(std::function<void(Event&)>*)glfwGetWindowUserPointer(window);
 
-			//KeyTypedEvent event(keycode);
-			//callback(event);
+			KeyTypedEvent event(keycode);
+			callback(event);
 		});
 
 		glfwSetMouseButtonCallback(m_nativeWindow, [](GLFWwindow* window, int button, int action, int mods)
@@ -94,13 +94,13 @@ namespace Engine {
 			{
 			case KEY_PRESS:
 			{
-				//MouseButtonPressedEvent event(button);
-				//callback(event);
+				MouseButtonPressedEvent event(button);
+				callback(event);
 				break;
 			}
 			case KEY_RELEASE:
-				//MouseButtonPressedEvent event(button);
-				//callback(event);
+				MouseButtonPressedEvent event(button);
+				callback(event);
 				break;
 			}
 		});
@@ -109,8 +109,8 @@ namespace Engine {
 		{
 			std::function<void(Event&)>& callback = *(std::function<void(Event&)>*)glfwGetWindowUserPointer(window);
 
-			//MouseScrolledEvent event((float)xOffset, (float)yOffset);
-			//callback(event);
+			MouseScrolledEvent event((float)xOffset, (float)yOffset);
+			callback(event);
 		});
 	}
 

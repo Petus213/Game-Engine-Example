@@ -29,30 +29,27 @@ namespace Engine {
 
 	class KeyReleasedEvent : public KeyEvent
 	{
+	private:
+		
 	public:
-		//KeyReleasedEvent(){}
-
-		virtual EventType getEventType() const override { return EventType::KeyReleased; }
-		virtual int getCategoryFlags() const override { return EventCategoryKeyboard; }
+		KeyReleasedEvent(int keycode) : KeyEvent(keycode){}
 
 		static EventType getStaticType() { return EventType::KeyReleased; }
+		virtual EventType getEventType() const { return EventType::KeyReleased; }
 
-		//inline int getKeycode() const { return i_KeyCode; }
+		inline int getKeycode() const { return m_keycode; }
 	};
 
 	class KeyTypedEvent : public KeyEvent
 	{
-	private:
-		int i_KeyCode;
-	public:
-		//KeyTypedEvent(){}
 
-		virtual EventType getEventType() const override { return EventType::KeyTyped; }
-		virtual int getCategoryFlags() const override { return EventCategoryKeyboard; }
+	public:
+		KeyTypedEvent(int keycode) : KeyEvent(keycode) {}
 
 		static EventType getStaticType() { return EventType::KeyTyped; }
+		virtual EventType getEventType() const { return EventType::KeyTyped; }
 
-		inline int getKeycode() const { return i_KeyCode; }
+		inline int getKeycode() const { return m_keycode; }
 	};
 
 

@@ -3,44 +3,48 @@
 
 namespace Engine {
 
-	class MouseButtonPressedEvent : public Event
+	class MouseEvent : public Event {
+	protected:
+		int m_button;
+		MouseEvent(int button) : m_button(button) {}
+	public:
+		virtual int getCategoryFlags() const override { return EventCategoryMouseButton | EventCategoryInput; }
+
+		inline int getKeycode() const { return m_button; }
+	};
+
+	class MouseButtonPressedEvent : public MouseEvent
 	{
 	private:
-		int i_MouseButton;
+		int m_repeatCount;
 	public:
-		MouseButtonPressedEvent(){}
+		MouseButtonPressedEvent(int button) : MouseEvent(button){}
 
 		virtual EventType getEventType() const override { return EventType::MouseButtonPressed; }
-		virtual int getCategoryFlags() const override { return EventCategoryMouseButton; }
-
 		static EventType getStaticType() { return EventType::MouseButtonPressed; }
 
-		inline int getMouseButton() const { return i_MouseButton; }
+		inline int getMouseButton() const { return m_repeatCount; }
 	};
 
-	class MouseButtonReleasedEvent : public Event
+	class MouseButtonReleasedEvent : public MouseEvent
 	{
-	private:
-		int i_MouseButton;
 	public:
-		MouseButtonReleasedEvent(){}
+		MouseButtonReleasedEvent(int button) : MouseEvent(button){}
 
 		virtual EventType getEventType() const override { return EventType::MouseButtonReleased; }
-		virtual int getCategoryFlags() const override { return EventCategoryMouseButton; }
-
 		static EventType getStaticType() { return EventType::MouseButtonReleased; }
 
-		inline int getMouseButton() const { return i_MouseButton; }
+		inline int getMouseButton() const { return m_button; }
 	};
 
-	class MouseMovedEvent : public Event
+	class MouseMovedEvent : public MouseEvent
 	{
 	private:
 		float f_Xoffset;
 		float f_Yoffset;
 
 	public:
-		MouseMovedEvent(){}
+		MouseMovedEvent(float xOffset, float yOffset){}
 
 		virtual EventType getEventType() const override { return EventType::MouseMoved; }
 		virtual int getCategoryFlags() const override { return EventCategoryMouse; }
@@ -51,7 +55,7 @@ namespace Engine {
 		inline int getMouseYoffset() const { return f_Yoffset; }
 	};
 
-	class MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public MouseEvent
 	{
 	private:
 		float f_Xoffset;
