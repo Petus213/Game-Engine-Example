@@ -1,6 +1,5 @@
 #include "engine_pch.h"
 #include "systems/inputPoller.h"
-#include "systems/log.h"
 #include "include/platform/Windows/GLFWInputPoller.h"
 
 namespace Engine {

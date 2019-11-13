@@ -6,6 +6,11 @@
 #include "core/application.h"
 #include "systems\log.h"
 #include "systems\Timer.h"
+#include "windows\GLFWCodes.h"
+
+#ifdef NG_PLATFORM_WINDOWS
+#include "windows\GLFW_Windows.h"
+#endif 
 
 namespace Engine {
 	Application* Application::s_instance = nullptr;
@@ -22,6 +27,10 @@ namespace Engine {
 			s_instance = this;
 		}
 
+#ifdef NG_PLATFORM_WINDOWS
+		m_windowSys = std::shared_ptr<WindowSystem>(new GLFWWindowSystem());
+#endif
+		m_windowSys->start();
 		m_window = std::unique_ptr<Window>(Window::create());
 		m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
 	}
@@ -40,6 +49,7 @@ namespace Engine {
 
 	bool Application::onResizeWindow(WindowResizeEvent & e)
 	{
+		m_window->onResize(e.getWidth(), e.getHeight());
 		NG_INFO("Resize Window to {0}x{1}", e.getWidth(), e.getHeight());
 		return true;
 	}
@@ -65,7 +75,9 @@ namespace Engine {
 	//Keyboard Events Here
 	bool Application::onKeyPressed(KeyPressedEvent & e)
 	{
-		NG_INFO("Key has been pressed", e.getKeycode(), e.getRepeatCount());
+		if (e.getKeycode() == KEY_Q) {
+			NG_INFO("Q Pressed");
+		}
 		return true;
 	}
 
@@ -142,20 +154,10 @@ namespace Engine {
 			Engine::timer::Update();
 			float timestep = Engine::timer::GetSeconds();
 			accumulatedTime += timestep;
-			NG_INFO("FPS: {0}. Time Elapsed: {1}.", (int)(1.0f / timestep), accumulatedTime);
+			//NG_INFO("FPS: {0}. Time Elapsed: {1}.", (int)(1.0f / timestep), accumulatedTime);
 
 			m_window->onUpdate(timestep);
 			
-			if (accumulatedTime > 10.f)
-			{
-				WindowResizeEvent e1(1024, 720);
-				onEvent(e1);
-				WindowCloseEvent e2;
-				onEvent(e2);
-				
-			}
-
-
 		}
 	}
 

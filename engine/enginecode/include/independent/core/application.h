@@ -23,16 +23,13 @@ namespace Engine {
 		static Application* s_instance; //!< Singleton instance of the application
 		static float accumulatedTime;
 		bool m_Running;
-
+		std::shared_ptr<WindowSystem> m_windowSys;
 		std::unique_ptr<Window> m_window;
-
-	
-		
-
 
 	public:
 		virtual ~Application(); //!< Deconstructor
 		inline static Application& getInstance() { return *s_instance; } //!< Instance getter from singleton pattern
+		inline Window& getWindow() { return *m_window; }
 		void run(); //!< Main loop
 		void onEvent(Event& e);
 

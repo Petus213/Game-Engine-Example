@@ -3,45 +3,49 @@
 
 namespace Engine {
 
-	class KeyPressedEvent : public Event
+	class KeyEvent : public Event {
+	protected:
+		int m_keycode;
+		KeyEvent(int keycode) : m_keycode(keycode) {}
+	public:
+		virtual int getCategoryFlags() const override { return EventCategoryKeyboard | EventCategoryInput; }
+
+		inline int getKeycode() const { return m_keycode; }
+	};
+
+	class KeyPressedEvent : public KeyEvent
 	{
 	private:
-		int i_KeyCode;
-		int i_RepeatCount;
+		int m_repeatcount;
 	public:
-		KeyPressedEvent();
-
-		virtual EventType getEventType() const override { return EventType::KeyPressed; }
-		virtual int getCategoryFlags() const override { return EventCategoryKeyboard; }
+		KeyPressedEvent(int keycode, int repeatcount) : KeyEvent(keycode), m_repeatcount(repeatcount) {}
 
 		static EventType getStaticType() { return EventType::KeyPressed; }
+		virtual EventType getEventType() const override { return EventType::KeyPressed; }
 
-		inline int getKeycode() const { return i_KeyCode; }
-		inline int getRepeatCount() const { return i_RepeatCount; }
+		inline int getRepeatCount() const { return m_repeatcount; }
 
 	};
 
-	class KeyReleasedEvent : public Event
+	class KeyReleasedEvent : public KeyEvent
 	{
-	private:
-		int i_KeyCode;
 	public:
-		KeyReleasedEvent();
+		//KeyReleasedEvent(){}
 
 		virtual EventType getEventType() const override { return EventType::KeyReleased; }
 		virtual int getCategoryFlags() const override { return EventCategoryKeyboard; }
 
 		static EventType getStaticType() { return EventType::KeyReleased; }
 
-		inline int getKeycode() const { return i_KeyCode; }
+		//inline int getKeycode() const { return i_KeyCode; }
 	};
 
-	class KeyTypedEvent : public Event
+	class KeyTypedEvent : public KeyEvent
 	{
 	private:
 		int i_KeyCode;
 	public:
-		KeyTypedEvent();
+		//KeyTypedEvent(){}
 
 		virtual EventType getEventType() const override { return EventType::KeyTyped; }
 		virtual int getCategoryFlags() const override { return EventCategoryKeyboard; }

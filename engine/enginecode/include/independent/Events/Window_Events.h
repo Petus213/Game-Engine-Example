@@ -37,7 +37,7 @@ namespace Engine {
 	private:
 
 	public:
-		WindowFocusEvent();
+		WindowFocusEvent() {}
 		virtual EventType getEventType() const override { return EventType::WindowFocus; }
 		virtual int getCategoryFlags() const override { return EventCategoryWindow; }
 
@@ -50,7 +50,7 @@ namespace Engine {
 		float xPos;
 		float yPos;
 	public:
-		WindowLostFocusEvent();
+		WindowLostFocusEvent(){}
 		virtual EventType getEventType() const override { return EventType::windowLostFocus; }
 		virtual int getCategoryFlags() const override { return EventCategoryWindow; }
 
@@ -63,7 +63,7 @@ namespace Engine {
 	class WindowMovedEvent : public Event
 	{
 	public:
-		WindowMovedEvent();
+		WindowMovedEvent(){}
 		virtual EventType getEventType() const override { return EventType::WindowMoved; }
 		virtual int getCategoryFlags() const override { return EventCategoryWindow; }
 

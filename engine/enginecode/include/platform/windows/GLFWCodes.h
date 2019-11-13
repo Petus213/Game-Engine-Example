@@ -1,5 +1,22 @@
 #pragma once
 
+#define KEY_RELEASE                0
+/*! @brief The key or mouse button was pressed.
+ *
+ *  The key or mouse button was pressed.
+ *
+ *  @ingroup input
+ */
+#define KEY_PRESS                  1
+ /*! @brief The key was held down until it repeated.
+  *
+  *  The key was held down until it repeated.
+  *
+  *  @ingroup input
+  */
+#define KEY_REPEAT                 2
+  /*! @} */
+
 //From glfw3.h
 /* Printable keys */
 #define KEY_SPACE              32

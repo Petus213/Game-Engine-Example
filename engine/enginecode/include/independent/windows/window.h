@@ -3,10 +3,18 @@
 #include "graphicsContext.h"
 #include <string>
 #include <functional>
+#include "systems\system.h"
+#include "Events\events.h"
 
 namespace Engine {
 
-	class Event; // Be replaced
+	class WindowSystem : public System {
+	private:
+	public:
+		virtual void start(SystemSignal init = SystemSignal::None, ...) = 0; //!< Start the system
+		virtual void stop(SystemSignal close = SystemSignal::None, ...) = 0; //!< Stop the system
+		virtual bool isActive() const = 0;
+	};
 
 	struct WindowProperties
 	{

@@ -1,5 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
+#include "systems\Codes.h"
 
 namespace Engine {
 
@@ -19,7 +20,7 @@ namespace Engine {
 		inline static bool isKeyPressed(int keycode) { return s_instance->isKeyPressedImpl(keycode); }
 		inline static bool isMousePressed(int button) { return s_instance->isMouseButtonPressedImpl(button); }
 		inline static glm::vec2 getMousePosition() { return s_instance->getMousePositionImpl(); }
-		inline static float getMouseXImpl() { return s_instance->getMouseXImpl(); }
-		inline static float getMouseYImpl() { return s_instance->getMouseYImpl(); }
+		inline static float getMouseX() { return s_instance->getMouseX(); }
+		inline static float getMouseY() { return s_instance->getMouseY(); }
 	};
 }

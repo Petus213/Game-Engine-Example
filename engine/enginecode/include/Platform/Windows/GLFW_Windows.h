@@ -4,7 +4,17 @@
 #include "windows\window.h"
 
 
+
 namespace Engine {
+
+	class GLFWWindowSystem : public WindowSystem {
+	private:
+		static bool m_active;
+	public:
+		void start(SystemSignal init = SystemSignal::None, ...) override; 
+		void stop(SystemSignal close = SystemSignal::None, ...) override; 
+		inline bool isActive() const override { return m_active; };
+	};
 
 	class GLFWWindowImpl : public Window
 	{
