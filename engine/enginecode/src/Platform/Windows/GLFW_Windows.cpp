@@ -105,6 +105,13 @@ namespace Engine {
 			}
 		});
 
+		glfwSetCursorPosCallback(m_nativeWindow, [](GLFWwindow* window, double xOffset, double yOffset)
+		{
+			std::function<void(Event&)>& callback = *(std::function<void(Event&)>*)glfwGetWindowUserPointer(window);
+			MouseMovedEvent event((float)xOffset, (float)yOffset);
+			callback(event);
+		});
+
 		glfwSetScrollCallback(m_nativeWindow, [](GLFWwindow* window, double xOffset, double yOffset)
 		{
 			std::function<void(Event&)>& callback = *(std::function<void(Event&)>*)glfwGetWindowUserPointer(window);

@@ -108,13 +108,13 @@ namespace Engine {
 
 	bool Application::onMouseMoved(MouseMovedEvent & e)
 	{
-		NG_INFO("Mouse has moved", e.getMouseXoffset(), e.getMouseYoffset());
+		NG_INFO("Mouse has moved to {0}x{1}", e.getMouseXoffset(), e.getMouseYoffset());
 		return true;
 	}
 	
 	bool Application::onMouseScrolled(MouseScrolledEvent & e)
 	{
-		NG_INFO("Mouse has scrolled", e.getMouseXoffset(), e.getMouseYoffset());
+		NG_INFO("Mouse has scrolled to {0}x{1}", e.getMouseXoffset(), e.getMouseYoffset());
 		return true;
 	}
 

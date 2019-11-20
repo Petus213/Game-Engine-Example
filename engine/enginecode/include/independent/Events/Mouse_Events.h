@@ -9,7 +9,7 @@ namespace Engine {
 		MouseEvent(int button) : m_button(button) {}
 	public:
 		virtual int getCategoryFlags() const override { return EventCategoryMouseButton | EventCategoryInput; }
-
+		
 		inline int getKeycode() const { return m_button; }
 	};
 
@@ -37,38 +37,38 @@ namespace Engine {
 		inline int getMouseButton() const { return m_button; }
 	};
 
-	class MouseMovedEvent : public MouseEvent
+	class MouseMovedEvent : public Event
 	{
 	private:
-		float f_Xoffset;
-		float f_Yoffset;
+		float m_XOffset;
+		float m_YOffset;
 
 	public:
-		MouseMovedEvent(float xOffset, float yOffset){}
+		MouseMovedEvent(float xOffset, float yOffset) : m_XOffset(xOffset), m_YOffset(yOffset) {}
 
 		virtual EventType getEventType() const override { return EventType::MouseMoved; }
-		virtual int getCategoryFlags() const override { return EventCategoryMouse; }
+		virtual int getCategoryFlags() const override { return EventCategoryMouse | EventCategoryInput; }
 
 		static EventType getStaticType() { return EventType::MouseMoved; }
 
-		inline int getMouseXoffset() const { return f_Xoffset; }
-		inline int getMouseYoffset() const { return f_Yoffset; }
+		inline int getMouseXoffset() const { return m_XOffset; }
+		inline int getMouseYoffset() const { return m_YOffset; }
 	};
 
-	class MouseScrolledEvent : public MouseEvent
+	class MouseScrolledEvent : public Event
 	{
 	private:
-		float f_Xoffset;
-		float f_Yoffset;
+		float m_XOffset;
+		float m_YOffset;
 	public:
-		MouseScrolledEvent(){}
+		MouseScrolledEvent(float xOffset, float yOffset) : m_XOffset(xOffset), m_YOffset(yOffset) {}
 
 		virtual EventType getEventType() const override { return EventType::MouseScrolled; }
 		virtual int getCategoryFlags() const override { return EventCategoryMouse; }
 
 		static EventType getStaticType() { return EventType::MouseScrolled; }
 
-		inline int getMouseXoffset() const { return f_Xoffset; }
-		inline int getMouseYoffset() const { return f_Yoffset; }
+		inline int getMouseXoffset() const { return m_XOffset; }
+		inline int getMouseYoffset() const { return m_YOffset; }
 	};
 }
