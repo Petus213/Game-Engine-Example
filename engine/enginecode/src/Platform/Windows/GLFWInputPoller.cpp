@@ -1,5 +1,5 @@
 #include "engine_pch.h"
-#include "windows/GLFWInputPoller.h"
+#include "Windows/GLFWInputPoller.h"
 
 #include "core/application.h"
 

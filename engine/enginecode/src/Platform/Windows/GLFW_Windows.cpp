@@ -1,7 +1,7 @@
 #include "engine_pch.h"
 
-#include "windows\GLFW_Windows.h"
-#include "windows\GLFW_Context.h"
+#include "Windows\GLFW_Windows.h"
+#include "Windows\GLFW_Context.h"
 #include "Events\Window_Events.h"
 #include "Events\Keyboard_Events.h"
 #include "Events\Mouse_Events.h"
