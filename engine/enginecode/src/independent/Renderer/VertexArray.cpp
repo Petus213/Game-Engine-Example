@@ -22,5 +22,6 @@ namespace Engine {
 		default:
 			NG_ERROR("Unknown Graphics API");
 		}
+		return nullptr;
 	}
 }

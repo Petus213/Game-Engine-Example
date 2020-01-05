@@ -30,6 +30,9 @@ project "Engine"
 		"%{prj.name}/enginecode/**.cpp",
 		"engine/precompiled/engine_pch.h",
 		"engine/precompiled/engine_pch.cpp"
+		"%{prj.name}/include/**.h",
+		"%{prj.name}/src/**.cpp",
+		"vendor/stb_image/stb_image.cpp"
 	}
 
 	includedirs
