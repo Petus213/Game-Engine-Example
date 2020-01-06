@@ -23,7 +23,7 @@ namespace Engine {
 		virtual unsigned int getWidth() const override { return m_Width; }
 		virtual unsigned int getHeight() const override { return m_Height; }
 		virtual unsigned int getChannels() const override { return m_Channels; }
-		virtual unsigned int getSlot() const override { return m_Slot; }
+		virtual unsigned int getSlot() const override { return m_TextureSlot; }
 	};
 
 
