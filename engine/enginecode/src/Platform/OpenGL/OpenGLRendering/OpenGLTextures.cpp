@@ -4,32 +4,26 @@
 #include <glad\glad.h>
 namespace Engine {
 
-	
-
 	OpenGLTexture::OpenGLTexture(const std::string & path)
 	{
-		int width, height, channels;
-		unsigned char * texData;
-		m_Width = width;
-		m_Height = height;
-		m_Channels = channels;
-
-		glGenTextures(1, &m_Opengl_ID);
-		m_TextureSlot = s_TextureSlot;
-		s_TextureSlot++;
-
-		glActiveTexture(GL_TEXTURE0 + m_TextureSlot);
-		glBindTexture(GL_TEXTURE_2D, m_Opengl_ID);
+		glGenTextures(1, &m_letterTexture);
+		glActiveTexture(GL_TEXTURE0);
+		m_TextureSlot[0] = 0;
+		glBindTexture(GL_TEXTURE_2D, m_letterTexture);
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-		if (texData)
+		int width, height, channels;
+
+		unsigned char *data = stbi_load("assets/textures/letterCube.png", &width, &height, &channels, 0);
+		if (data)
 		{
-			if (channels == 3) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, texData);
-			else if (channels == 4) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texData);
+			if (channels == 3) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			else if (channels == 4) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 			else return;
 			glGenerateMipmap(GL_TEXTURE_2D);
 		}
@@ -37,45 +31,46 @@ namespace Engine {
 		{
 			return;
 		}
-		stbi_image_free(texData);
-	}
+		stbi_image_free(data);
 
-	OpenGLTexture::OpenGLTexture(unsigned int width, unsigned int height, unsigned int channels, unsigned char * texData)
-	{
-		glGenTextures(1, &m_Opengl_ID);
-		m_TextureSlot = s_TextureSlot;
-		s_TextureSlot++;
-
-		glActiveTexture(GL_TEXTURE0 + m_TextureSlot);
-		glBindTexture(GL_TEXTURE_2D, m_Opengl_ID);
+		glGenTextures(1, &m_numberTexture);
+		glActiveTexture(GL_TEXTURE0 + 1);
+		m_TextureSlot[1] = 1;
+		glBindTexture(GL_TEXTURE_2D, m_numberTexture);
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-		if (channels == 3)
+		
+		data = stbi_load("assets/textures/numberCube.png", &width, &height, &channels, 0);
+		if (data)
 		{
-			glPixelStorei(GL_UNPACK_ALIGNMENT, 3);
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, texData);
-			glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+			if (channels == 3) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			else if (channels == 4) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+			else return;
+			glGenerateMipmap(GL_TEXTURE_2D);
 		}
-		else if (channels == 4) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texData);
-		else if (channels == 1)
+		else
 		{
-			glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, width, height, 0, GL_RED, GL_UNSIGNED_BYTE, texData);
-			glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+			return;
 		}
-		else return;
-		glGenerateMipmap(GL_TEXTURE_2D);
+		stbi_image_free(data);
 	}
 
+
+	OpenGLTexture::OpenGLTexture(unsigned int width, unsigned int height, unsigned int channels, unsigned char * texData)
+	{
+		
+	}
+
+	
 	OpenGLTexture::~OpenGLTexture()
 	{
 		glDeleteTextures(1, &m_Opengl_ID);
 	}
 
 	
-
+	
 }

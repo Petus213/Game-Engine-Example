@@ -1,3 +1,6 @@
+/*! \file Codes
+* This file is used to get the codes for GLFW systems
+*/
 #pragma once
 
 #ifdef NG_PLATFORM_WINDOWS

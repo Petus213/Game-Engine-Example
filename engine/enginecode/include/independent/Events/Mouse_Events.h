@@ -1,8 +1,14 @@
+/*! \file Mouse_Events.h
+*\brief This file contains all of the mouse events
+*/
 #pragma once
 #include "Events/events.h"
 
 namespace Engine {
 
+	/*! \class MouseEvent
+	*\breif The mouse event class will return what type of mouse button has been pressed.
+	*/
 	class MouseEvent : public Event {
 	protected:
 		int m_button;
@@ -12,7 +18,9 @@ namespace Engine {
 		
 		inline int getKeycode() const { return m_button; }
 	};
-
+	/*! \class MouseButtonPressedEvent
+	*\breif The mouse button pressed event class will return when a mouse button has been pressed.
+	*/
 	class MouseButtonPressedEvent : public MouseEvent
 	{
 	private:
@@ -25,7 +33,9 @@ namespace Engine {
 
 		inline int getMouseButton() const { return m_repeatCount; }
 	};
-
+	/*! \class MouseButtonReleasedEvent
+	*\breif The mouse button released event class will return when a mouse button has been released.
+	*/
 	class MouseButtonReleasedEvent : public MouseEvent
 	{
 	public:
@@ -36,7 +46,10 @@ namespace Engine {
 
 		inline int getMouseButton() const { return m_button; }
 	};
-
+	/*! \class MouseMovedEvent
+	*\breif The mouse moved event class will return a value for when the mouse cursor has been moved.
+	* particularly useful for first person games or other camera controls, for example.
+	*/
 	class MouseMovedEvent : public Event
 	{
 	private:
@@ -54,7 +67,10 @@ namespace Engine {
 		inline int getMouseXoffset() const { return m_XOffset; }
 		inline int getMouseYoffset() const { return m_YOffset; }
 	};
-
+	/*! \class MouseScrolledEvent
+	*\breif The mouse scrolled event class will return when the mouse wheel has been scrolled.
+	* a good use for this would be to zoom the camera in and out.
+	*/
 	class MouseScrolledEvent : public Event
 	{
 	private:

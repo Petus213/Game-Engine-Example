@@ -1,9 +1,15 @@
+/*! \file Timer.h
+* This file contains the Timer class
+*/
 #pragma once
 #include "systems\system.h"
 #include <chrono>
 
 namespace Engine {
 
+	/*! \class timer
+	* This class will start a timer, and also count the elapsed time.
+	*/
 	class timer : System 
 	{
 	private:

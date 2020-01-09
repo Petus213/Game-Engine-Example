@@ -1,12 +1,17 @@
+/*! \file Buffers.h
+*\brief This file contains all information regarding the Buffers
+* This includes OpenGL.
+*/
 #pragma once
-
 #include "systems\log.h"
 
 namespace Engine {
-
+	/*! \class ShaderDataType
+	*This class simply provides the type of data the shader could be
+	*/
 	enum class ShaderDataType
 	{
-		None = 0, Float, Float2, Float3, Float4, Mat3, Mat4, Int, Int2, Int3, Int4, Bool
+		None = 0, Float, Float2, Float3, Float4, Mat3, Mat4, Int, Int2, Int3, Int4, Bool, Sampler2D
 	};
 
 	static unsigned int ShaderDataTypeSize(ShaderDataType type)
@@ -24,6 +29,7 @@ namespace Engine {
 		case ShaderDataType::Int3:		return 4 * 3;
 		case ShaderDataType::Int4:		return 4 * 4;
 		case ShaderDataType::Bool:		return 1;
+		case ShaderDataType::Sampler2D:	return 1;
 		}
 		NG_ASSERT(false, "Unknown ShaderDataType");
 		return 0;
@@ -56,13 +62,16 @@ namespace Engine {
 			case ShaderDataType::Int3:		return 3;
 			case ShaderDataType::Int4:		return 4;
 			case ShaderDataType::Bool:		return 1;
+			case ShaderDataType::Sampler2D:	return 1;
 			}
 			NG_ASSERT(false, "Unknown ShaderDataType");
 			return 0;
 
 		}
 	};
-
+	/*! \class BufferLayout
+	*
+	*/
 	class BufferLayout
 	{
 	public:
@@ -73,6 +82,7 @@ namespace Engine {
 			CalculateOffsetsAndStride();
 		}
 
+		void addElement(BufferElement element);
 		inline unsigned int GetStride() const { return m_stride; }
 		inline const std::vector<BufferElement>& GetElements() const { return m_Elements; }
 
@@ -97,7 +107,9 @@ namespace Engine {
 		std::vector<BufferElement> m_Elements;
 		unsigned int m_stride = 0;
 	};
-
+	/*! \class VertexBuffer
+	*The vertex buffer will create a vertex buffer
+	*/
 	class VertexBuffer
 	{
 	public:
@@ -113,7 +125,9 @@ namespace Engine {
 
 	};
 
-
+	/*! \class IndexBuffer
+	*The index buffer will create an index buffer
+	*/
 	class IndexBuffer
 	{
 	public:

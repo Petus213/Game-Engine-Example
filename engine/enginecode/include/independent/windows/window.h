@@ -1,3 +1,7 @@
+/*! \file window.h
+* This file contains classes associated with drawing a window
+* The window will contain the rendered scene.
+*/
 #pragma once
 
 #include "graphicsContext.h"
@@ -8,6 +12,9 @@
 
 namespace Engine {
 
+	/*! \class WindowSystem
+	* This class will check to see if the window system is on or off.
+	*/
 	class WindowSystem : public System {
 	private:
 	public:
@@ -16,6 +23,9 @@ namespace Engine {
 		virtual bool isActive() const = 0;
 	};
 
+	/*! \class WindowProperties
+	* This class contains all the information for the window.
+	*/
 	struct WindowProperties
 	{
 		std::string m_title;
@@ -28,6 +38,9 @@ namespace Engine {
 			m_title(title), m_width(width), m_height(height), m_isFullScreen(fullscreen) {}
 	};
 
+	/*! \class Window
+	* This class contains the Window Events, and how they are used.
+	*/
 	class Window
 	{
 	public:

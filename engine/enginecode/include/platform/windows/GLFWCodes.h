@@ -1,3 +1,7 @@
+/*! \file GLFWCodes.h
+* This file contains all of the possible codes which might be used.
+* This allows the program to make full use of the keyboard and mouse.
+*/
 #pragma once
 
 #define KEY_RELEASE                0

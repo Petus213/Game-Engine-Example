@@ -1,8 +1,15 @@
+/*! \file GLFWInputPoller.h
+* This file is for the Input Poller specifically to make use with OpenGL
+*/
 #pragma once
 #include "systems\inputPoller.h"
 
 namespace Engine {
 
+	/*! \class GLFWInputPoller
+	* This class inherits from the Input Poller class
+	* It works only for OpenGL
+	*/
 	class GLFWInputPoller : public InputPoller
 	{
 	protected:

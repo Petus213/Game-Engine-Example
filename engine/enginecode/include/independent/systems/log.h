@@ -1,8 +1,17 @@
+/*! \file log.h
+* This system will log events to the console. 
+* This is useful for testing.
+* The class also allows the use of Macros throughout the Engine.
+*/
 #pragma once
 #include <systems/system.h>
 #include <spdlog/spdlog.h>
 
 namespace Engine {
+
+	/*! \class Log
+	* This class will log events to the console.
+	*/
 	class Log:System
 	{
 	private:

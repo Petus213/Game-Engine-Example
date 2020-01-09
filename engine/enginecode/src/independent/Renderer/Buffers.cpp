@@ -46,4 +46,9 @@ namespace Engine {
 			NG_ERROR("Unknown grpahics API");
 		}
 	}
+	void BufferLayout::addElement(BufferElement element)
+	{
+		m_Elements.push_back(element);
+		CalculateOffsetsAndStride();
+	}
 }

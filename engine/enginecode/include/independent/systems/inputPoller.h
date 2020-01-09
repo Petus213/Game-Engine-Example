@@ -1,9 +1,16 @@
+/*! \file inputPoller
+* This file will handle the inputs outlined in the events systems
+*/
 #pragma once
 #include <glm/glm.hpp>
 #include "systems\Codes.h"
 
 namespace Engine {
 
+	/*! \class InputPoller
+	* This will take the events and poll it.
+	* This works for Keyboard, Mouse and Window.
+	*/
 	class InputPoller
 	{
 	private:

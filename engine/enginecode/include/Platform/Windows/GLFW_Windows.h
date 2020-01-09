@@ -1,3 +1,6 @@
+/*! \file GLFW_Windows.h
+* This file is for the Window of the system, but only with an OpenGL renderer.
+*/
 #pragma once
 #include "glad\glad.h"
 #include "GLFW\glfw3.h"
@@ -6,7 +9,10 @@
 
 
 namespace Engine {
-
+	/*! \class GLFWWindowSystem
+	*	This class inherits from the WindowSystem
+	* It will only work with the OpenGL renderer.
+	*/
 	class GLFWWindowSystem : public WindowSystem {
 	private:
 		static bool m_active;
@@ -16,6 +22,11 @@ namespace Engine {
 		inline bool isActive() const override { return m_active; };
 	};
 
+	/*! \class GLFWWindowImpl
+	* This class inherits from the Window class
+	* It will only work with the OpenGL renderer
+	* It manages the functions with the window events.
+	*/
 	class GLFWWindowImpl : public Window
 	{
 	private:

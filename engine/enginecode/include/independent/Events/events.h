@@ -1,9 +1,17 @@
+/*! \file events.h
+*\brief Here all of the events are initialised.
+*Without this, events would not take place.
+*/
+
 #pragma once
 
 #include <functional>
 
 namespace Engine {
 
+	/*! \class EventType
+	*\brief These are the possible events which could occur, including mouse and keyboard.
+	*/
 	enum class EventType
 	{
 		None = 0,
@@ -22,6 +30,9 @@ namespace Engine {
 		EventCategoryMouseButton = 1 << 4,
 	};
 
+	/*! \class Event
+	*\breif The event class will handle the events given to the system.
+	*/
 	class Event
 	{
 	private:
@@ -34,7 +45,9 @@ namespace Engine {
 		inline void handle(bool isHandled) { m_handled = isHandled; }
 		inline bool isInCategory(EventCategory category) { return getCategoryFlags()& category; }
 	};
-
+	/*! \class EventDispatcher
+	*\brief The event dispatcher will return what type of event has been given.
+	*/
 	class EventDispatcher
 	{
 		template<typename T>

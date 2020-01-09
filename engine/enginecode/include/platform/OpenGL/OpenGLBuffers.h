@@ -1,9 +1,15 @@
+/*! \file OpenGLBuffers.h
+* This file uses the Buffers class, but is specifically for OpenGL.
+*/
 #pragma once
-
 #include "include\independent\Renderer\Buffers.h"
 
 namespace Engine {
 
+	/*! \class OpenGLVertexBuffer
+	* This class inherits from the VertexBuffer class
+	* It is used only for the OpenGL renderer.
+	*/
 	class OpenGLVertexBuffer : public VertexBuffer
 	{
 	public:
@@ -22,7 +28,10 @@ namespace Engine {
 		
 	};
 
-
+	/*! \class OpenGLIndexBuffer
+	* This class inherits from the IndexBuffer class
+	* It is used only for the OpenGL renderer.
+	*/
 	class OpenGLIndexBuffer : public IndexBuffer
 	{
 	public:

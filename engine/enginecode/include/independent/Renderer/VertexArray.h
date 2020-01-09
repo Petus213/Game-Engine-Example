@@ -1,3 +1,7 @@
+/*! \file VertexArray.h
+*\brief This file contains all information regarding the Vertex Array
+* Other renderers, such as OpenGL, will use this class. 
+*/
 #pragma once
 
 #include <memory>
@@ -5,6 +9,9 @@
 
 namespace Engine {
 	
+	/*! \class VertexArray
+	* This class is used with the OpenGL Vertex Array
+	*/
 	class VertexArray
 	{
 	public:

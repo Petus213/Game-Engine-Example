@@ -1,9 +1,15 @@
+/*! \file OpenGLVertexArray.h
+* This file uses the Vertex Array class, but is used specifically for OpenGL
+*/
 #pragma once
-
 #include "Renderer\VertexArray.h"
 
 namespace Engine {
 
+	/*! \class OpenGLVertexArray
+	* This class inherits from the VertexArray class
+	* It is used only for the OpenGL renderer.
+	*/
 	class OpenGLVertexArray : public VertexArray
 	{
 	public:
