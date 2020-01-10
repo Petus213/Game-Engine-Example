@@ -19,7 +19,7 @@
 #include "systems\log.h"
 #include "systems\Timer.h"
 #include "windows\GLFWCodes.h"
-
+#include "windows\Camera.h"
 
 #ifdef NG_PLATFORM_WINDOWS
 #include "windows\GLFW_Windows.h"
@@ -58,9 +58,12 @@ namespace Engine {
 #pragma region TempSetup
 		//  Temporary set up code to be abstracted
 		m_renderer = std::shared_ptr<Renderer>(Renderer::createBasic3D());
+		m_camera = std::shared_ptr<FPSCameraControllerEuler>(new FPSCameraControllerEuler());
 
 		m_renderer->actionCommand(RenderCommand::setDepthTestLessCommand(true));
 		m_renderer->actionCommand(RenderCommand::setBackfaceCullingCommand(true));
+
+		m_camera->init(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
 
 		m_FCvertexArray.reset(VertexArray::create());
 		float FCvertices[6 * 24] = {
@@ -288,13 +291,10 @@ namespace Engine {
 			m_renderer->actionCommand(RenderCommand::setClearColourCommand(.8f, .8f, .8f, 1.f));
 			m_renderer->actionCommand(RenderCommand::ClearDepthColourBufferCommand());
 
-			glm::mat4 projection = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f); // Basic 4:3 camera
+			glm::mat4 projection = m_camera->getCamera()->getProjection();
+			glm::mat4 view = m_camera->getCamera()->getView();
 
-			glm::mat4 view = glm::lookAt(
-				glm::vec3(0.0f, 0.0f, -4.5f), // Camera is at (0.0,0.0,-4.5), in World Space
-				glm::vec3(0.f, 0.f, 0.f), // and looks at the origin
-				glm::vec3(0.f, 1.f, 0.f)  // Standing straight  up
-			);
+			
 
 			// Code to make the cube move, you can ignore this more or less.
 			glm::mat4 FCtranslation, TPtranslation;
@@ -340,7 +340,7 @@ namespace Engine {
 			m_TPmaterial->setDataElement("u_model", (void *)&TPmodel[0][0]);
 
 			glm::vec3 lightPos = glm::vec3(0.f, 1.f, 5.f);
-			glm::vec3 viewPos = glm::vec3(0.f, 0.f, -4.5f);
+			glm::vec3 viewPos = m_camera->getCamera()->getPosition();
 			glm::vec3 lightColour = glm::vec3(1.f, 1.f, 1.f);
 
 			m_TPmaterial->setDataElement("u_lightPos", (void*)&lightPos[0]);
@@ -349,7 +349,7 @@ namespace Engine {
 			m_TPmaterial->setDataElement("u_texData", (void*)&texSlot);
 
 			m_renderer->submit(m_TPmaterial);
-
+			m_camera->onUpdate(s_timestep);
 
 
 			// End temporary code

@@ -14,6 +14,7 @@ namespace Engine {
 		None = 0, Float, Float2, Float3, Float4, Mat3, Mat4, Int, Int2, Int3, Int4, Bool, Sampler2D
 	};
 
+	//!< This switch statement will return an integer depending on the shader data type.
 	static unsigned int ShaderDataTypeSize(ShaderDataType type)
 	{
 		switch (type)

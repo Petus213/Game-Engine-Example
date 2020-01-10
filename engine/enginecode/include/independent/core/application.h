@@ -1,4 +1,5 @@
 /** \file application.h
+* This is the main file for the system
 */
 #pragma once
 #include "Events/events.h"
@@ -11,7 +12,7 @@
 #include "Renderer\VertexArray.h"
 #include "Renderer\Material.h"
 #include "Renderer\Renderer.h"
-
+#include "windows\PerspectiveCamera3D.h"
 
 namespace Engine {
 
@@ -34,7 +35,7 @@ namespace Engine {
 		std::unique_ptr<Window> m_window;
 		
 
-
+		std::shared_ptr<FPSCameraControllerEuler> m_camera;
 		std::shared_ptr<VertexArray> m_FCVA; //!< FCVA - Flat Colour Vertex Array
 		std::shared_ptr<VertexArray> m_TPVA; //!< TPVA - Textured Phong Vertex Array
 		std::shared_ptr<Texture> m_numberTexture; //!< Number Texture for cube

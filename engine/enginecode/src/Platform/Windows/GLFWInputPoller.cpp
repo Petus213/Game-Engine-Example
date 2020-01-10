@@ -44,7 +44,4 @@ namespace Engine {
 		return (int)pos.y;
 	}
 
-
-
-
 }

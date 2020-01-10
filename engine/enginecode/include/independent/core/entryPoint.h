@@ -1,4 +1,5 @@
 /** \file entryPoint.h
+* This file is used to run the application
 */
 #pragma once
 
