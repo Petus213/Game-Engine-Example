@@ -16,10 +16,10 @@ namespace Engine {
 	{
 	public:
 		OpenGL_GLFWGraphicsContext(GLFWwindow* window);
-		void init() override;
-		void swapBuffers() override;
+		void init() override; //!< void function for initilization
+		void swapBuffers() override; //!< void function for swapping buffers
 	private:
-		GLFWwindow* m_window;
+		GLFWwindow* m_window; //!< pointer to m_window
 
 	};
 

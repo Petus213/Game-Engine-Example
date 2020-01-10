@@ -29,13 +29,13 @@ namespace Engine {
 		Application(); //!< Constructor
 	private:
 		static Application* s_instance; //!< Singleton instance of the application
-		static float accumulatedTime;
-		bool m_Running;
-		std::shared_ptr<WindowSystem> m_windowSys;
-		std::unique_ptr<Window> m_window;
+		static float accumulatedTime; //!< float of accumulatedTime, or time passed
+		bool m_Running; //!< boolean for m_Running
+		std::shared_ptr<WindowSystem> m_windowSys; //!< Shared Pointer to WindowSystem
+		std::unique_ptr<Window> m_window; //!< Unique pointer of Window
 		
 
-		std::shared_ptr<FPSCameraControllerEuler> m_camera;
+		std::shared_ptr<FPSCameraControllerEuler> m_camera; //!< Camera Controller (3D)
 		std::shared_ptr<VertexArray> m_FCVA; //!< FCVA - Flat Colour Vertex Array
 		std::shared_ptr<VertexArray> m_TPVA; //!< TPVA - Textured Phong Vertex Array
 		std::shared_ptr<Texture> m_numberTexture; //!< Number Texture for cube
@@ -49,21 +49,17 @@ namespace Engine {
 
 		std::shared_ptr<Renderer> m_renderer; //!< FCShader - Flat Colour Shader
 		
-		static float s_timestep;
+		static float s_timestep; //!< float variable for timestep
 
 		
 #pragma region TempVars
 		// Temp stuff
-		std::shared_ptr<VertexArray> m_FCvertexArray; // Flat Colour VAO
-		std::shared_ptr<VertexBuffer> m_FCvertexBuffer;// Flat Colour VBO
-		std::shared_ptr<VertexArray> m_TPvertexArray; // Textured Phong VAO
-		std::shared_ptr<VertexBuffer> m_TPvertexBuffer;// Textured Phong VBO
-		std::shared_ptr<IndexBuffer> m_FCindexBuffer; // Index buffer for colour cube
-		std::shared_ptr<IndexBuffer> m_TPindexBuffer; // Index buffer for texture Phong cube
-		//unsigned int m_FCprogram; // Flat colour shader ID
-		//unsigned int m_TPprogram; // Textured Phong shader ID
-		//unsigned int m_numberTexture; // Texture ID
-		//unsigned int m_letterTexture; // Texture ID
+		std::shared_ptr<VertexArray> m_FCvertexArray; //!< Flat Colour VAO
+		std::shared_ptr<VertexBuffer> m_FCvertexBuffer;//!< Flat Colour VBO
+		std::shared_ptr<VertexArray> m_TPvertexArray; //!< Textured Phong VAO
+		std::shared_ptr<VertexBuffer> m_TPvertexBuffer;//!< Textured Phong VBO
+		std::shared_ptr<IndexBuffer> m_FCindexBuffer; //!< Index buffer for colour cube
+		std::shared_ptr<IndexBuffer> m_TPindexBuffer; //!< Index buffer for texture Phong cube
 		unsigned int m_textureSlots[2]; // Slot where the textures are stored
 		bool m_goingUp = false; // Is the cude going up?
 		float m_timeSummed = 10.f; // How much timer has elasped?
@@ -73,24 +69,24 @@ namespace Engine {
 	public:
 		virtual ~Application(); //!< Deconstructor
 		inline static Application& getInstance() { return *s_instance; } //!< Instance getter from singleton pattern
-		inline static float getTimestep() { return s_timestep; }
-		inline Window& getWindow() { return *m_window; }
+		inline static float getTimestep() { return s_timestep; } //!< getsTimestep, returns s_timestep
+		inline Window& getWindow() { return *m_window; } //!< getWindow, returns m_window
 		void run(); //!< Main loop
-		void onEvent(Event& e);
+		void onEvent(Event& e);//!< Event Function
 
-		//Window Events Here
+		//!< Window Events Here
 		bool onCloseWindow(WindowCloseEvent& e);
 		bool onResizeWindow(WindowResizeEvent& e);
 		bool onFocusWindow(WindowFocusEvent& e);
 		bool onLostFocusWindow(WindowLostFocusEvent& e);
 		bool onMovedWindow(WindowMovedEvent& e);
 
-		//Keyboard Events here
+		//!< Keyboard Events here
 		bool onKeyPressed(KeyPressedEvent& e);
 		bool onKeyReleased(KeyReleasedEvent& e);
 		bool onKeyTyped(KeyTypedEvent& e);
 
-		//Mouse Events Here
+		//!< Mouse Events Here
 		bool onMouseButtonPressed(MouseButtonPressedEvent& e);
 		bool onMouseButtonReleased(MouseButtonReleasedEvent& e);
 		bool onMouseMoved(MouseMovedEvent& e);

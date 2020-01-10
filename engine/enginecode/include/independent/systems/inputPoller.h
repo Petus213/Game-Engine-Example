@@ -14,20 +14,20 @@ namespace Engine {
 	class InputPoller
 	{
 	private:
-		static InputPoller* s_instance;
+		static InputPoller* s_instance; //!< static pointer to s_instance
 
 	protected:
-		virtual bool isKeyPressedImpl(int keycode) = 0;
-		virtual bool isMouseButtonPressedImpl(int button) = 0;
-		virtual glm::vec2 getMousePositionImpl() = 0;
-		virtual float getMouseXImpl() = 0;
-		virtual float getMouseYImpl() = 0;
+		virtual bool isKeyPressedImpl(int keycode) = 0; //!< boolean value isKeyPressed
+		virtual bool isMouseButtonPressedImpl(int button) = 0; //!< boolean value for isMouseButtonPressed
+		virtual glm::vec2 getMousePositionImpl() = 0; //!< vec2 got getting mouse position
+		virtual float getMouseXImpl() = 0; //!< float vlaue for mouse X position
+		virtual float getMouseYImpl() = 0; //!< float vlaue for mouse Y position
 
 	public:
-		inline static bool isKeyPressed(int keycode) { return s_instance->isKeyPressedImpl(keycode); }
-		inline static bool isMousePressed(int button) { return s_instance->isMouseButtonPressedImpl(button); }
-		inline static glm::vec2 getMousePosition() { return s_instance->getMousePositionImpl(); }
-		inline static float getMouseX() { return s_instance->getMouseX(); }
-		inline static float getMouseY() { return s_instance->getMouseY(); }
+		inline static bool isKeyPressed(int keycode) { return s_instance->isKeyPressedImpl(keycode); } //!< returns boolean value for if the key is pressed
+		inline static bool isMousePressed(int button) { return s_instance->isMouseButtonPressedImpl(button); } //!< returns boolean value for if the mouse buttons has been pressed
+		inline static glm::vec2 getMousePosition() { return s_instance->getMousePositionImpl(); } //!< returns value for mouse position
+		inline static float getMouseX() { return s_instance->getMouseX(); } //!< returns value for the mouse X position
+		inline static float getMouseY() { return s_instance->getMouseY(); }	//!< returns value for the mouse Y position
 	};
 }

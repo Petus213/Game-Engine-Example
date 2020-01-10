@@ -75,6 +75,14 @@ namespace Engine {
 		{
 			m_position += m_right * m_translationSpeed * timestep;
 		}
+		if (InputPoller::isKeyPressed(KEY_SPACE))
+		{
+			m_position += m_up * m_translationSpeed * timestep;
+		}
+		if (InputPoller::isKeyPressed(KEY_C))
+		{
+			m_position -= m_up * m_translationSpeed * timestep;
+		}
 		if (InputPoller::isMousePressed(MOUSE_BUTTON_1))
 		{
 			glm::vec2 currentMousePosition = InputPoller::getMousePosition();

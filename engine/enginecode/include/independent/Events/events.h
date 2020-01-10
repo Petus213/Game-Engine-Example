@@ -12,7 +12,7 @@ namespace Engine {
 	/*! \class EventType
 	*\brief These are the possible events which could occur, including mouse and keyboard.
 	*/
-	enum class EventType
+	enum class EventType //!< Provides the various Event Types
 	{
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, windowLostFocus, WindowMoved,
@@ -20,7 +20,7 @@ namespace Engine {
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
-	enum EventCategory
+	enum EventCategory //!< Assigns the Event Types a value
 	{
 		None = 0,
 		EventCategoryWindow = 1 << 0,
@@ -36,14 +36,14 @@ namespace Engine {
 	class Event
 	{
 	private:
-		bool m_handled = false;
+		bool m_handled = false; //!< boolean variable, set to false;
 
 	public:
-		virtual EventType getEventType() const = 0;
-		virtual int getCategoryFlags() const = 0;
-		inline bool handled() const { return m_handled; }
-		inline void handle(bool isHandled) { m_handled = isHandled; }
-		inline bool isInCategory(EventCategory category) { return getCategoryFlags()& category; }
+		virtual EventType getEventType() const = 0; //!< Pure Virtual function of getEventType
+		virtual int getCategoryFlags() const = 0; //!< Pure Virtual function of getCategoryFlags
+		inline bool handled() const { return m_handled; } //!< boolean will return m_handled
+		inline void handle(bool isHandled) { m_handled = isHandled; } //!< void function of handle
+		inline bool isInCategory(EventCategory category) { return getCategoryFlags()& category; } //!< Boolean will return getCategoryFlags
 	};
 	/*! \class EventDispatcher
 	*\brief The event dispatcher will return what type of event has been given.

@@ -38,11 +38,11 @@ namespace Engine {
 
 	struct BufferElement
 	{
-		std::string Name;
-		ShaderDataType Type;
-		unsigned int Size;
-		size_t Offset;
-		bool Normalized;
+		std::string Name; //!< string Name
+		ShaderDataType Type; //!< returns a Type for the ShaderDataType
+		unsigned int Size; //!< integer for size
+		size_t Offset; //!< size_t Offset
+		bool Normalized; //!< bool value for Normalized
 
 		BufferElement() = default;
 
@@ -76,24 +76,24 @@ namespace Engine {
 	class BufferLayout
 	{
 	public:
-		BufferLayout(){}
+		BufferLayout(){} //!< constructor
 
-		BufferLayout(const std::initializer_list<BufferElement>& elements) : m_Elements(elements)
+		BufferLayout(const std::initializer_list<BufferElement>& elements) : m_Elements(elements) //!< constructor
 		{
 			CalculateOffsetsAndStride();
 		}
 
-		void addElement(BufferElement element);
-		inline unsigned int GetStride() const { return m_stride; }
-		inline const std::vector<BufferElement>& GetElements() const { return m_Elements; }
+		void addElement(BufferElement element); //!< void add element function
+		inline unsigned int GetStride() const { return m_stride; } //!< integer for getStride
+		inline const std::vector<BufferElement>& GetElements() const { return m_Elements; } //!< Vector for class BufferElement, returns m_Elements
 
-		std::vector<BufferElement>::iterator begin() { return m_Elements.begin(); }
-		std::vector<BufferElement>::iterator end() { return m_Elements.end(); }
-		std::vector<BufferElement>::const_iterator begin() const { return m_Elements.begin(); }
-		std::vector<BufferElement>::const_iterator end() const { return m_Elements.end(); }
+		std::vector<BufferElement>::iterator begin() { return m_Elements.begin(); } //!< begin function
+		std::vector<BufferElement>::iterator end() { return m_Elements.end(); } //!< end function
+		std::vector<BufferElement>::const_iterator begin() const { return m_Elements.begin(); } //!< begin function
+		std::vector<BufferElement>::const_iterator end() const { return m_Elements.end(); } //!< end function
 
 	private:
-		void CalculateOffsetsAndStride()
+		void CalculateOffsetsAndStride() //!< void function CalculateOffsetsAndStride
 		{
 			size_t offset = 0;
 			m_stride = 0;
@@ -106,7 +106,7 @@ namespace Engine {
 		}
 
 		std::vector<BufferElement> m_Elements;
-		unsigned int m_stride = 0;
+		unsigned int m_stride = 0; //!< integer for m_stride
 	};
 	/*! \class VertexBuffer
 	*The vertex buffer will create a vertex buffer
@@ -114,15 +114,15 @@ namespace Engine {
 	class VertexBuffer
 	{
 	public:
-		virtual ~VertexBuffer() = default;
+		virtual ~VertexBuffer() = default; //!< destructor
 
-		virtual void bind() const = 0;
-		virtual void unbind() const = 0;
+		virtual void bind() const = 0; //!< void function bind
+		virtual void unbind() const = 0; //!< void function unbind
 
-		virtual const BufferLayout& GetLayout() const = 0;
-		virtual void SetLayout(const BufferLayout& layout) = 0;
-
-		static VertexBuffer * create(float* vertices, unsigned int size);
+		virtual const BufferLayout& GetLayout() const = 0; //!< GetLayout from BufferLayout
+		virtual void SetLayout(const BufferLayout& layout) = 0; //!< void function SetLayout
+		 
+		static VertexBuffer * create(float* vertices, unsigned int size); //!< pointer from vertexBuffer to create
 
 	};
 
@@ -132,12 +132,12 @@ namespace Engine {
 	class IndexBuffer
 	{
 	public:
-		virtual void bind() const = 0;
-		virtual void unbind() const = 0;
-
-		virtual unsigned int getCount() const = 0;
-
-		static IndexBuffer * create(unsigned int* indices, unsigned int count);
+		virtual void bind() const = 0; //!< void function bind
+		virtual void unbind() const = 0; //!< void function unbind
+		 
+		virtual unsigned int getCount() const = 0; //!< integer variable getCount
+		 
+		static IndexBuffer * create(unsigned int* indices, unsigned int count); //!< pointer from IndexBuffer to create
 
 		
 	};

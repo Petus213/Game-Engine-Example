@@ -13,8 +13,8 @@ namespace Engine {
 	class GraphicsContext
 	{
 	public:
-		virtual void init() = 0;
-		virtual void swapBuffers() = 0;
+		virtual void init() = 0; //!< void for initilisation
+		virtual void swapBuffers() = 0; //!< void for swapping buffers
 	};
 
 }

@@ -13,19 +13,19 @@ namespace Engine {
 	class timer : System 
 	{
 	private:
-		static std::chrono::high_resolution_clock::time_point startTimer;
-		static std::chrono::high_resolution_clock::time_point endTimer;
-		static std::chrono::duration<float> time_Passed;
+		static std::chrono::high_resolution_clock::time_point startTimer; //!< Chrono function to start timer
+		static std::chrono::high_resolution_clock::time_point endTimer; //!< Chrono function to end timer
+		static std::chrono::duration<float> time_Passed; //<! chrono function to find time passed
 
-		static bool bRunning;
+		static bool bRunning; //!< boolean value for bRunning
 
 		
 	public:
 
 		static void start(SystemSignal init = SystemSignal::None); //!< Start the system
 		static void stop(SystemSignal close = SystemSignal::None); //!< Stop the system
-		static float GetSeconds() { return time_Passed.count(); }
-		static void Update();
+		static float GetSeconds() { return time_Passed.count(); } //!< float to return amount of time passed, in seconds
+		static void Update(); //!< void function for update
 
 
 	};

@@ -13,18 +13,18 @@ namespace Engine {
 	class OpenGLVertexBuffer : public VertexBuffer
 	{
 	public:
-		OpenGLVertexBuffer(float* vertices, unsigned int size);
-		virtual ~OpenGLVertexBuffer();
+		OpenGLVertexBuffer(float* vertices, unsigned int size); //!< Constructor
+		virtual ~OpenGLVertexBuffer(); //!< destructor
 
-		virtual void bind() const override;
-		virtual void unbind() const override;
+		virtual void bind() const override; //!< void function for bind
+		virtual void unbind() const override; //!< void function for unbind
 
-		virtual const BufferLayout& GetLayout() const override { return m_layout; }
-		virtual void SetLayout(const BufferLayout& layout) override { m_layout = layout; }
+		virtual const BufferLayout& GetLayout() const override { return m_layout; } //!< Gets buffer layout - returns m_layout
+		virtual void SetLayout(const BufferLayout& layout) override { m_layout = layout; } //!< void function for setting layout
 
 	private:
-		unsigned int m_rendererID;
-		BufferLayout m_layout;
+		unsigned int m_rendererID; //!< integer value for m_rendererID
+		BufferLayout m_layout; //!< m_layout from BuferLayout
 		
 	};
 
@@ -35,16 +35,16 @@ namespace Engine {
 	class OpenGLIndexBuffer : public IndexBuffer
 	{
 	public:
-		OpenGLIndexBuffer(unsigned int* indices, unsigned int count);
-		virtual ~OpenGLIndexBuffer();
+		OpenGLIndexBuffer(unsigned int* indices, unsigned int count); //!< constructor
+		virtual ~OpenGLIndexBuffer(); //!< destructor
 
-		virtual void bind() const;
-		virtual void unbind() const;
+		virtual void bind() const; //!< void function for bind
+		virtual void unbind() const; //!< void function for unbind
 
-		virtual unsigned int getCount() const { return m_count; }
+		virtual unsigned int getCount() const { return m_count; } //!< integer vlaue for getCount - returns m_count
 
 	private:
-		unsigned int m_count;
-		unsigned int m_rendererID;
+		unsigned int m_count; //!< integer value for m_count
+		unsigned int m_rendererID; //!< integer value for m_rendererID
 	};
 }

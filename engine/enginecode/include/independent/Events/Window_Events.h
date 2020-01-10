@@ -12,12 +12,12 @@ namespace Engine {
 	class WindowCloseEvent : public Event
 	{
 	public:
-		WindowCloseEvent() {}
+		WindowCloseEvent() {} //!< destructor
 
-		EventType getEventType() const override { return EventType::WindowClose; }
-		int getCategoryFlags() const override { return EventCategoryWindow; }
+		EventType getEventType() const override { return EventType::WindowClose; } //!< gets event type from EventType class
+		int getCategoryFlags() const override { return EventCategoryWindow; } //!< integer getCategoryFlags
 
-		static EventType getStaticType() { return EventType::WindowClose;  }
+		static EventType getStaticType() { return EventType::WindowClose;  } //!< gets static type from EventType class
 	};
 	/*! \class WindowResizeEvent
 	*\breif The window resize event class will resize the current window.
@@ -26,19 +26,19 @@ namespace Engine {
 	class WindowResizeEvent : public Event
 	{
 	private:
-		int m_width;
-		int m_height;
+		int m_width; //!< integer width
+		int m_height; //!< integer height
 
 	public:
-		WindowResizeEvent(int width, int height) : m_width(width), m_height(height) {}
+		WindowResizeEvent(int width, int height) : m_width(width), m_height(height) {} //!< constructor
 
-		virtual EventType getEventType() const override { return EventType::WindowResize; }
-		virtual int getCategoryFlags() const override { return EventCategoryWindow; }
+		virtual EventType getEventType() const override { return EventType::WindowResize; } //!< get Event Type from EventType
+		virtual int getCategoryFlags() const override { return EventCategoryWindow; } //!< intget getCategoryFlags
 		
-		static EventType getStaticType() { return EventType::WindowResize; }
+		static EventType getStaticType() { return EventType::WindowResize; } //!< gets static type from EventType class
 
-		inline int getWidth() const { return m_width; }
-		inline int getHeight() const { return m_height; }
+		inline int getWidth() const { return m_width; } //!< Integer for width, returns m_width
+		inline int getHeight() const { return m_height; } //!< Integer for height, returns m_height
 	};
 	/*! \class WindowFocusEvent
 	*\breif The window focus event class will acknowledge when the current window is not the main view.
@@ -49,11 +49,12 @@ namespace Engine {
 	private:
 
 	public:
-		WindowFocusEvent() {}
-		virtual EventType getEventType() const override { return EventType::WindowFocus; }
-		virtual int getCategoryFlags() const override { return EventCategoryWindow; }
+		WindowFocusEvent() {} //!< constructor
+		virtual EventType getEventType() const override { return EventType::WindowFocus; }//!< get Event Type from EventType
+		virtual int getCategoryFlags() const override { return EventCategoryWindow; }//!< intget getCategoryFlags
 
-		static EventType getStaticType() { return EventType::WindowFocus; }
+		static EventType getStaticType() { return EventType::WindowFocus; } //!< gets static type from EventType class
+
 	};
 	/*! \class WindowLostFocusEvent
 	*\breif The window lost focus event class will acknowledge when the current window is not the main view.
@@ -61,17 +62,17 @@ namespace Engine {
 	class WindowLostFocusEvent : public Event
 	{
 	private:
-		float xPos;
-		float yPos;
+		float xPos; //!< float xPosition
+		float yPos; //!< float yPosition
 	public:
-		WindowLostFocusEvent(){}
-		virtual EventType getEventType() const override { return EventType::windowLostFocus; }
-		virtual int getCategoryFlags() const override { return EventCategoryWindow; }
+		WindowLostFocusEvent(){} //!< constructor
+		virtual EventType getEventType() const override { return EventType::windowLostFocus; }//!< get Event Type from EventType
+		virtual int getCategoryFlags() const override { return EventCategoryWindow; }//!< intget getCategoryFlags
 
-		static EventType getStaticType() { return EventType::windowLostFocus; }
+		static EventType getStaticType() { return EventType::windowLostFocus; }//!< gets static type from EventType class
 
-		inline float getXpos() const { return xPos; }
-		inline float getYpos() const { return yPos; }
+		inline float getXpos() const { return xPos; } //!< float getXpos, returns xPosition
+		inline float getYpos() const { return yPos; } //!< float getYpos, returns yPosition
 	};
 	/*! \class WindowMovedEvent
 	*\brief The Window Moved Event will return a value when it has been moved.
@@ -79,11 +80,11 @@ namespace Engine {
 	class WindowMovedEvent : public Event
 	{
 	public:
-		WindowMovedEvent(){}
-		virtual EventType getEventType() const override { return EventType::WindowMoved; }
-		virtual int getCategoryFlags() const override { return EventCategoryWindow; }
+		WindowMovedEvent(){} //!< constructor
+		virtual EventType getEventType() const override { return EventType::WindowMoved; }//!< get Event Type from EventType
+		virtual int getCategoryFlags() const override { return EventCategoryWindow; }//!< intget getCategoryFlags
 
-		static EventType getStaticType() { return EventType::WindowMoved; }
+		static EventType getStaticType() { return EventType::WindowMoved; }//!< gets static type from EventType class
 	};
 
 }

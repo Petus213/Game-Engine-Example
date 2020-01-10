@@ -16,7 +16,7 @@ namespace Engine {
 	class System
 	{
 	public:
-		virtual ~System() {};
+		virtual ~System() {}; //!< destructor
 		virtual void start(SystemSignal init = SystemSignal::None, ...) = 0; //!< Start the system
 		virtual void stop(SystemSignal close = SystemSignal::None, ...) = 0; //!< Stop the system
 	};
