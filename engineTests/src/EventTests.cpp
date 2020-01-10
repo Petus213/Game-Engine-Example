@@ -1,5 +1,18 @@
 #include "EventTests.h"
 
+TEST(Events, DispatchCloseTrue)
+{
+	Engine::EventDispatcher dispatcher(ce);
+	bool result = dispatcher.dispatch<Engine::WindowCloseEvent>(std::bind(OnCloseTrue, std::placeholders::_1));
+	EXPECT_TRUE(result);
+}
+TEST(Events, DispatchCloseFalse)
+{
+	Engine::EventDispatcher dispatcher(ce);
+	bool result = dispatcher.dispatch<Engine::WindowCloseEvent>(std::bind(OnCloseFalse, std::placeholders::_1));
+	EXPECT_FALSE(result);
+}
+
 TEST(Events, ResizeConstructor)
 {
 	int gotWidth = re.getWidth();

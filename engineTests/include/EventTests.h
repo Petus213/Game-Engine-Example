@@ -13,6 +13,15 @@ Engine::WindowCloseEvent ce;
 Engine::WindowFocusEvent fe;
 Engine::WindowMovedEvent me;
 
+bool OnCloseTrue(Engine::WindowCloseEvent& e)
+{
+	return true;
+}
+
+bool OnCloseFalse(Engine::WindowCloseEvent& e)
+{
+	return false;
+}
 
 bool OnResizeTrue(Engine::WindowResizeEvent& e)
 {
